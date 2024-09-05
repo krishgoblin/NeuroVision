@@ -1,18 +1,14 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HeroSection from "./component/Herosection";
-import Courses from "./component/Courses";
+import Landing from "./component/Landing"; // New Landing Page Component
+import InputPage from "./component/InputPage";
 
 const App = () => {
   return (
     <Router>
-      <div className="container mx-auto">
-        <HeroSection />
-        <Courses />
-        {/* <Routes>
-          <Route path="/" element={<HeroSection />} />
-        </Routes> */}
-      </div>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/input" element={<InputPage />} />
+      </Routes>
     </Router>
   );
 };
