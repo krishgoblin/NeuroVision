@@ -1,8 +1,11 @@
 // Import required modules
 const express = require("express");
 const axios = require("axios");
-const app = express();
+const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const app = express();
+app.use(cors()); // Enable CORS
 
 const prompt = `Just give the JSON format
 Create a personalized math course based on the following student details:
@@ -64,24 +67,25 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Route to handle requests to Gemini API
-app.get("/api/gemini", async (req, res) => {
-//   const { prompt } = req.body; // Expect a prompt to be passed in the request body
-    console.log(prompt);
+app.post("/api/gemini", async (req, res) => {
+  const { promptuser } = req.body; // Expect a prompt to be passed in the request body
+  // console.log(prompt + promptuser);
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required" });
   }
 
   try {
-    console.log(prompt);
+    console.log(prompt + " " + promptuser);
     const genAI = new GoogleGenerativeAI("AIzaSyAIGrtMDFDYYO95J9OJNozis90vSci4rUQ");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(prompt);
+    const result = await model.generateContent(prompt + " " + promptuser);
 
     // Respond with the data from the API
     res.json({
       message: "Successfully fetched response from Gemini API",
       data: result.response.text(),
     });
+    // res.send(result.response.text());
   } catch (error) {
     // Error handling for failed API calls
     res.status(500).json({
