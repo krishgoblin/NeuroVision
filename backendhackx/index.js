@@ -85,7 +85,7 @@ app.post("/api/gemini", async (req, res) => {
 
   try {
     console.log(prompt + " " + promptuser);
-    const genAI = new GoogleGenerativeAI("AIzaSyAIGrtMDFDYYO95J9OJNozis90vSci4rUQ");
+    const genAI = new GoogleGenerativeAI("API key");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt + " " + promptuser);
 
