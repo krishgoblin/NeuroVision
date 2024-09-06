@@ -1,4 +1,4 @@
-
+import heroImg from '../images/hero.png';
 import Navbar from "./NavBar";
 
 const Herosection = () => {
@@ -12,7 +12,7 @@ const Herosection = () => {
           {/* Hero Image */}
           <img
             className="w-64 h-64 object-cover md:w-[400px] md:h-[400px]"
-            src="hero.png"
+            src={heroImg}
             alt="Hero"
           />
 

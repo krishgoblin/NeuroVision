@@ -29,12 +29,12 @@ const InputPage = () => {
     setIsLoading(false);
   };
 
-  const handleAnswerChange = (sectionIndex, questionIndex, value) => {
-    setUserAnswers((prev) => ({
-      ...prev,
-      [`section_${sectionIndex}_question_${questionIndex}`]: value,
-    }));
-  };
+  // const handleAnswerChange = (sectionIndex, questionIndex, value) => {
+  //   setUserAnswers((prev) => ({
+  //     ...prev,
+  //     [`section_${sectionIndex}_question_${questionIndex}`]: value,
+  //   }));
+  // };
 
   return (
     <>
